@@ -70,15 +70,7 @@ describe.skipIf(!databaseAvailable)("bot deliberation eval through the product",
       const scenario = DELIBERATION_EVAL_CASES.find((c) => c.id === id)!;
       const model = await startModelEmulator({
         apiKey: fixtureKey,
-        steps: [
-          {
-            expect(request) {
-              expect(JSON.stringify(request.messages)).toContain("pausing all orders until March");
-            },
-            response: { type: "text", text: "Noted." },
-          },
-          ...turns.flatMap(peerTurn),
-        ],
+        steps: turns.flatMap(peerTurn),
       });
       const dataDir = await mkdtemp(path.join(tmpdir(), "rakazo-deliberation-eval-"));
       let evidence: Evidence | undefined;
@@ -137,7 +129,7 @@ describe.skipIf(!databaseAvailable)("bot deliberation eval through the product",
         expect(result.status).toBe("passed");
         expect(evidence?.peerExchanges).toEqual(
           turns.map((turn, index) => ({
-            message: (scenario.steps[index + 1] as { fromPeer: string }).fromPeer,
+            message: (scenario.steps[index] as { fromPeer: string }).fromPeer,
             reply: (turn as { reply: string }).reply,
           })),
         );
