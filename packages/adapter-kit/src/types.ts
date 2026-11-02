@@ -905,6 +905,13 @@ export interface MessagingInboundMessage {
   channelName: string | null;
   /** Group roster addresses when the platform reports them; often empty. */
   participants: string[];
+  /**
+   * Member departures this event reports one at a time (Telegram service
+   * messages on a platform that sends no roster): addresses that left or were
+   * removed, plus our own bot leaving, which ends every membership because
+   * nothing more can be delivered to that channel.
+   */
+  departures?: { addresses: string[]; botLeft: boolean };
   content: string;
   mediaUrl: string | null;
   /** Files the platform only serves to the bot's credentials (Slack url_private, …). */
@@ -1029,7 +1036,21 @@ export interface BrowserCapabilities {
 
 export interface BrowserNavigateRequest {
   url: string;
+  /** Folder in the computer's home that a file download is saved to; without it, none is saved. */
+  downloads?: string;
   signal?: AbortSignal;
+}
+
+/** A file the page downloaded: where it was saved, or why it was not. */
+export interface BrowserDownload {
+  name?: string;
+  path?: string;
+  /** Bytes saved, or so far while it is still downloading. */
+  size?: number;
+  type?: string;
+  /** Still downloading when the result was sent; the file appears at `path` once it is done. */
+  state?: "downloading";
+  error?: string;
 }
 
 export interface BrowserNavigateResult {
@@ -1040,6 +1061,7 @@ export interface BrowserNavigateResult {
   elements?: BrowserSnapshotNode[];
   /** The page was still loading or waiting on its own requests when it was captured. */
   loading?: boolean;
+  downloads?: BrowserDownload[];
   /** When set, the page tool could not operate; use computer_act instead. */
   fallback?: "computer_act";
   error?: string;
@@ -1113,6 +1135,8 @@ export type BrowserActStep =
 
 export interface BrowserActRequest {
   actions: BrowserActStep[];
+  /** Folder in the computer's home that a file download is saved to; without it, none is saved. */
+  downloads?: string;
   signal?: AbortSignal;
 }
 
@@ -1128,15 +1152,16 @@ export interface BrowserActResult {
   elements?: BrowserSnapshotNode[];
   /** The page was still loading or waiting on its own requests when that snapshot was taken. */
   loading?: boolean;
+  downloads?: BrowserDownload[];
   fallback?: "computer_act";
   error?: string;
 }
 
 /** A sandbox must route these commands through its owned screen, never generic host execution. */
 export type PageBrowserCommand =
-  | { command: "navigate"; url: string }
+  | { command: "navigate"; url: string; downloads?: string }
   | { command: "snapshot" }
-  | { command: "act"; actions: BrowserActStep[] };
+  | { command: "act"; actions: BrowserActStep[]; downloads?: string };
 
 export type PageBrowserResult = Partial<BrowserSnapshotResult & BrowserActResult> & { ok: boolean };
 

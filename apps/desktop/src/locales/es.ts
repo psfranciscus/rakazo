@@ -165,6 +165,8 @@ export const ES_MESSAGES: Record<string, string> = {
   "Docker is not installed on this computer.": "Docker no está instalado en esta computadora.",
   "Docker is installed, but Docker Compose is missing. Install Docker Desktop or the docker-compose-plugin.":
     "Docker está instalado, pero falta Docker Compose. Instala Docker Desktop o docker-compose-plugin.",
+  "Could not check Docker Compose. Check the output below, then retry.":
+    "No se pudo comprobar Docker Compose. Revisa la salida de abajo y vuelve a intentarlo.",
   "Docker is installed but not running. Start Docker, then check again.":
     "Docker está instalado, pero no está en funcionamiento. Inicia Docker y vuelve a comprobar.",
   "This user cannot access Docker. Add it to the docker group (sudo usermod -aG docker $USER), sign out and back in, then check again.":

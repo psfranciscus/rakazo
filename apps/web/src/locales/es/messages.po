@@ -442,6 +442,10 @@ msgstr "Se abrió una pestaña de inicio de sesión en <0>{0}</0>. Introduce est
 msgid "A subscription credential is stored securely."
 msgstr "Hay una credencial de suscripción guardada de forma segura."
 
+#: src/pages/KnowledgeSection.tsx
+msgid "About {kb} KB of memory no longer reaches the bot."
+msgstr ""
+
 #: src/components/InfoTooltip.tsx
 msgid "About {label}"
 msgstr "Acerca de {label}"
@@ -843,6 +847,10 @@ msgstr "Aprobaciones"
 #: src/pages/shell/message-cards.tsx
 msgid "Approve"
 msgstr "Aprobar"
+
+#: src/lib/call-session.ts
+msgid "Approve or deny it on screen."
+msgstr "Apruébalo o deniégalo en pantalla."
 
 #: src/pages/shell/message-cards.tsx
 msgid "Approve this server to let your agent use its tools."
@@ -3595,8 +3603,8 @@ msgid "Manage MCP servers"
 msgstr "Gestionar servidores MCP"
 
 #: src/pages/shell/bot-panel.tsx
-msgid "Manage the bots it creates"
-msgstr "Gestionar los bots que crea"
+msgid "Manage other bots"
+msgstr "Gestionar otros bots"
 
 #: src/pages/PluginsOverlay.tsx
 msgid "Manual"

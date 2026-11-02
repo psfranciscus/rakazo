@@ -442,6 +442,10 @@ msgstr "A sign-in tab opened at <0>{0}</0>. Enter this code there — this windo
 msgid "A subscription credential is stored securely."
 msgstr "A subscription credential is stored securely."
 
+#: src/pages/KnowledgeSection.tsx
+msgid "About {kb} KB of memory no longer reaches the bot."
+msgstr "About {kb} KB of memory no longer reaches the bot."
+
 #: src/components/InfoTooltip.tsx
 msgid "About {label}"
 msgstr "About {label}"
@@ -843,6 +847,10 @@ msgstr "Approvals"
 #: src/pages/shell/message-cards.tsx
 msgid "Approve"
 msgstr "Approve"
+
+#: src/lib/call-session.ts
+msgid "Approve or deny it on screen."
+msgstr "Approve or deny it on screen."
 
 #: src/pages/shell/message-cards.tsx
 msgid "Approve this server to let your agent use its tools."
@@ -3595,8 +3603,8 @@ msgid "Manage MCP servers"
 msgstr "Manage MCP servers"
 
 #: src/pages/shell/bot-panel.tsx
-msgid "Manage the bots it creates"
-msgstr "Manage the bots it creates"
+msgid "Manage other bots"
+msgstr "Manage other bots"
 
 #: src/pages/PluginsOverlay.tsx
 msgid "Manual"

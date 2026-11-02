@@ -442,6 +442,10 @@ msgstr "Er is een aanmeldtabblad geopend op <0>{0}</0>. Voer daar deze code in â
 msgid "A subscription credential is stored securely."
 msgstr "Een abonnementsgegeven wordt veilig opgeslagen."
 
+#: src/pages/KnowledgeSection.tsx
+msgid "About {kb} KB of memory no longer reaches the bot."
+msgstr ""
+
 #: src/components/InfoTooltip.tsx
 msgid "About {label}"
 msgstr "Over {label}"
@@ -843,6 +847,10 @@ msgstr "Goedkeuringen"
 #: src/pages/shell/message-cards.tsx
 msgid "Approve"
 msgstr "Goedkeuren"
+
+#: src/lib/call-session.ts
+msgid "Approve or deny it on screen."
+msgstr "Keur het goed of weiger het op het scherm."
 
 #: src/pages/shell/message-cards.tsx
 msgid "Approve this server to let your agent use its tools."
@@ -3595,8 +3603,8 @@ msgid "Manage MCP servers"
 msgstr "MCP-servers beheren"
 
 #: src/pages/shell/bot-panel.tsx
-msgid "Manage the bots it creates"
-msgstr "De bots beheren die deze bot maakt"
+msgid "Manage other bots"
+msgstr "Andere bots beheren"
 
 #: src/pages/PluginsOverlay.tsx
 msgid "Manual"

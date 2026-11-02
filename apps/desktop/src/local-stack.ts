@@ -198,7 +198,7 @@ export type LocalStackEvent =
   | { type: "wait-start" }
   | { type: "output"; line: string }
   | { type: "ready" }
-  | { type: "failed"; message: string };
+  | { type: "failed"; message: string; output?: string[] };
 
 export function initialStackState(imageTag: string): DesktopLocalStackState {
   return { phase: "idle", message: null, output: [], layerBytes: {}, imageTag };
@@ -257,7 +257,12 @@ export function reduceStackState(
     case "ready":
       return { ...state, phase: "ready", message: null };
     case "failed":
-      return { ...state, phase: "failed", message: event.message };
+      return {
+        ...state,
+        phase: "failed",
+        message: event.message,
+        output: [...state.output, ...(event.output ?? [])].slice(-STACK_OUTPUT_LINES),
+      };
   }
 }
 
@@ -495,12 +500,23 @@ export class LocalStackController {
     if (interrupted(signal, version))
       return this.push({ type: "failed", message: startInterrupted() });
     if (version.code !== 0) {
-      this.push({
-        type: "docker-missing",
-        message: t(
-          "Docker is installed, but Docker Compose is missing. Install Docker Desktop or the docker-compose-plugin.",
-        ),
-      });
+      if (failureKind(version) === "compose-missing") {
+        this.push({
+          type: "docker-missing",
+          message: t(
+            "Docker is installed, but Docker Compose is missing. Install Docker Desktop or the docker-compose-plugin.",
+          ),
+        });
+      } else {
+        this.push({
+          type: "failed",
+          message: t("Could not check Docker Compose. Check the output below, then retry."),
+          output: [
+            ...`${version.stdout}\n${version.stderr}`.split(/\r?\n/).filter((line) => line !== ""),
+            `docker compose version --short exited with code ${version.code}.`,
+          ],
+        });
+      }
       return;
     }
     const info = await this.docker(

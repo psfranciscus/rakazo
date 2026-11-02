@@ -442,6 +442,10 @@ msgstr ""
 msgid "A subscription credential is stored securely."
 msgstr "Bir abonelik kimlik bilgisi güvenli şekilde saklanıyor."
 
+#: src/pages/KnowledgeSection.tsx
+msgid "About {kb} KB of memory no longer reaches the bot."
+msgstr ""
+
 #: src/components/InfoTooltip.tsx
 msgid "About {label}"
 msgstr "{label} hakkında"
@@ -843,6 +847,10 @@ msgstr "Onaylar"
 #: src/pages/shell/message-cards.tsx
 msgid "Approve"
 msgstr "Onayla"
+
+#: src/lib/call-session.ts
+msgid "Approve or deny it on screen."
+msgstr "Ekranda onayla veya reddet."
 
 #: src/pages/shell/message-cards.tsx
 msgid "Approve this server to let your agent use its tools."
@@ -3104,11 +3112,11 @@ msgstr "Aramayı sonlandır"
 
 #: src/lib/call-session.ts
 msgid "Hang up first, then enter the code on screen."
-msgstr ""
+msgstr "Önce aramayı sonlandır, sonra kodu ekrana gir."
 
 #: src/lib/call-session.ts
 msgid "Hang up, then enter the code on screen."
-msgstr ""
+msgstr "Aramayı sonlandır, sonra kodu ekrana gir."
 
 #: src/pages/RoutineEditor.tsx
 msgid "header"
@@ -3595,8 +3603,8 @@ msgid "Manage MCP servers"
 msgstr "MCP sunucularını yönet"
 
 #: src/pages/shell/bot-panel.tsx
-msgid "Manage the bots it creates"
-msgstr "Oluşturduğu botları yönet"
+msgid "Manage other bots"
+msgstr "Diğer botları yönet"
 
 #: src/pages/PluginsOverlay.tsx
 msgid "Manual"

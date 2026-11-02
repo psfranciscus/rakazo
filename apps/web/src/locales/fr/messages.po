@@ -442,6 +442,10 @@ msgstr ""
 msgid "A subscription credential is stored securely."
 msgstr "Un identifiant d'abonnement est stocké de façon sécurisée."
 
+#: src/pages/KnowledgeSection.tsx
+msgid "About {kb} KB of memory no longer reaches the bot."
+msgstr ""
+
 #: src/components/InfoTooltip.tsx
 msgid "About {label}"
 msgstr "À propos de {label}"
@@ -843,6 +847,10 @@ msgstr "Approbations"
 #: src/pages/shell/message-cards.tsx
 msgid "Approve"
 msgstr "Approuver"
+
+#: src/lib/call-session.ts
+msgid "Approve or deny it on screen."
+msgstr "Approuvez ou refusez à l'écran."
 
 #: src/pages/shell/message-cards.tsx
 msgid "Approve this server to let your agent use its tools."
@@ -3595,8 +3603,8 @@ msgid "Manage MCP servers"
 msgstr "Gérer les serveurs MCP"
 
 #: src/pages/shell/bot-panel.tsx
-msgid "Manage the bots it creates"
-msgstr "Gérer les bots qu’il crée"
+msgid "Manage other bots"
+msgstr "Gérer les autres bots"
 
 #: src/pages/PluginsOverlay.tsx
 msgid "Manual"

@@ -442,6 +442,10 @@ msgstr "已在 <0>{0}</0> 打开登录页。请在那里输入验证码，这个
 msgid "A subscription credential is stored securely."
 msgstr "订阅凭据已安全存储。"
 
+#: src/pages/KnowledgeSection.tsx
+msgid "About {kb} KB of memory no longer reaches the bot."
+msgstr ""
+
 #: src/components/InfoTooltip.tsx
 msgid "About {label}"
 msgstr "关于{label}"
@@ -843,6 +847,10 @@ msgstr "审批"
 #: src/pages/shell/message-cards.tsx
 msgid "Approve"
 msgstr "批准"
+
+#: src/lib/call-session.ts
+msgid "Approve or deny it on screen."
+msgstr "请在屏幕上批准或拒绝。"
 
 #: src/pages/shell/message-cards.tsx
 msgid "Approve this server to let your agent use its tools."
@@ -3595,8 +3603,8 @@ msgid "Manage MCP servers"
 msgstr "管理 MCP 服务器"
 
 #: src/pages/shell/bot-panel.tsx
-msgid "Manage the bots it creates"
-msgstr "管理它创建的机器人"
+msgid "Manage other bots"
+msgstr "管理其他机器人"
 
 #: src/pages/PluginsOverlay.tsx
 msgid "Manual"

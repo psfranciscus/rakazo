@@ -53,6 +53,24 @@ export const TimeZoneSchema = z
   .min(1)
   .max(64)
   .refine(isValidTimeZone, { message: "Unknown timezone" });
+
+/** An app language code, such as "es", "pt-BR" or "zh-TW". */
+export const AppLocaleSchema = z.enum([
+  "en",
+  "de",
+  "ko",
+  "tr",
+  "hi",
+  "pt-BR",
+  "zh-CN",
+  "zh-TW",
+  "es",
+  "ru",
+  "fr",
+  "he",
+  "nl",
+  "ja",
+]);
 export type AvatarStyle = z.infer<typeof AvatarStyleSchema>;
 
 export { AGENT_SECRET_NAME_PATTERN };
@@ -725,6 +743,25 @@ export const MemoryDocumentSchema = z.object({
   updatedAt: z.string(),
 });
 export type MemoryDocument = z.infer<typeof MemoryDocumentSchema>;
+
+/** Which of a bot's memory documents reach the prompt, and what did not fit. */
+export const MemoryPromptDocumentUseSchema = z.object({
+  scope: MemoryScope,
+  path: z.string(),
+  revision: z.number().int(),
+  totalBytes: z.number().int().nonnegative(),
+  includedBytes: z.number().int().nonnegative(),
+  truncated: z.boolean(),
+});
+export type MemoryPromptDocumentUse = z.infer<typeof MemoryPromptDocumentUseSchema>;
+
+export const MemoryPromptBudgetSchema = z.object({
+  limitBytes: z.number().int().positive(),
+  usedBytes: z.number().int().nonnegative(),
+  documents: z.array(MemoryPromptDocumentUseSchema),
+  omitted: z.array(MemoryPromptDocumentUseSchema),
+});
+export type MemoryPromptBudget = z.infer<typeof MemoryPromptBudgetSchema>;
 
 /** Every bot and Space keeps its MEMORY.md index; other memory documents can be deleted. */
 export const MEMORY_INDEX_PATH = "MEMORY.md";
@@ -1806,6 +1843,11 @@ export const MeSchema = z.object({
    * Absent from servers that predate it.
    */
   timezone: z.string().nullable().optional(),
+  /**
+   * The app language last reported for the user, or null until an app reports it.
+   * Absent from servers that predate it.
+   */
+  locale: z.string().nullable().optional(),
   billingEnabled: z.boolean(),
   /** True until a user of a billing deployment answers or skips the signup survey. Absent from older servers. */
   needsSignupSurvey: z.boolean().optional(),
