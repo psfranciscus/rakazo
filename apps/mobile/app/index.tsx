@@ -1,5 +1,5 @@
 import type { RunActivityRow, SpaceBot, SpaceGroup } from "@rakazo/contracts";
-import { accountDisplay, isRetryableError } from "@rakazo/core";
+import { accountDisplay, isRetryableError, reportUiLocale } from "@rakazo/core";
 import type { Href } from "expo-router";
 import {
   Redirect,
@@ -272,7 +272,9 @@ function Home({ embedded, onSelectSpace, onShareSelect }: InboxPaneProps & { emb
       if (localeReportedFor !== nextMe.userId && nextMe.locale !== undefined) {
         localeReportedFor = nextMe.userId;
         if (nextMe.locale !== getActiveUiLocale()) {
-          void rpc("preferences/update", { locale: getActiveUiLocale() }).catch(() => undefined);
+          void reportUiLocale(getActiveUiLocale, (locale) =>
+            rpc("preferences/update", { locale }),
+          ).catch(() => undefined);
         }
       }
       inboxLoaded.current = true;
