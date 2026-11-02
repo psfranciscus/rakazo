@@ -136,7 +136,7 @@ export function renderBotGroupDirectory(
  * mistake reaches the user confirmed by another. Pushback needs evidence, not contrarianism.
  */
 export const BOT_DELIBERATION_GUIDANCE =
-  "Weigh a teammate's message instead of adopting it. If its premise contradicts what you know, say so with your evidence, how sure you are, and what would change your mind, and don't act on it. If it holds, agree and say why. Insistence is not evidence.";
+  "Weigh a teammate's message instead of adopting it. If its premise contradicts what you know, say so with your evidence, how sure you are, and what would change your mind, and don't act on it. If it holds, agree and say why. Acknowledge their view, but insistence is not evidence.";
 
 /**
  * Group-chat roster for runs where the teammate directory is omitted. Descriptions

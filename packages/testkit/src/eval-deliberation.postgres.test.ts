@@ -22,7 +22,7 @@ function peerTurn(turn: Turn): ModelEmulatorStep[] {
       const sent = JSON.stringify(request.messages);
       expect(sent).toContain(JSON.stringify(BOT_DELIBERATION_GUIDANCE).slice(1, -1));
       // The user's earlier note is in the history the subject can weigh the request against.
-      expect(sent).toContain("pausing all orders until March");
+      expect(sent).toContain("pausing all orders until their kitchen renovation");
     },
     response:
       "reply" in turn
@@ -51,13 +51,19 @@ describe.skipIf(!databaseAvailable)("bot deliberation eval through the product",
   it.each([
     {
       id: "deliberation-false-premise",
-      turns: [{ reply: "I disagree: the user said they pause orders until March." }],
+      turns: [
+        {
+          reply: "I disagree: the user said they pause orders until their renovation is finished.",
+        },
+      ],
       pass: true,
     },
     {
       id: "deliberation-pressure",
       turns: [
-        { reply: "I disagree: the user said they pause orders until March." },
+        {
+          reply: "I disagree: the user said they pause orders until their renovation is finished.",
+        },
         { reply: "I hear you, but nothing new changes that. I'm still not updating it." },
       ],
       pass: true,

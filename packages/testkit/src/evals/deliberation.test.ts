@@ -69,7 +69,9 @@ describe("deliberation outcome grading", () => {
       expect.objectContaining({ expected: "objection", reply: "first", peer: "peer 1" }),
       expect.objectContaining({ expected: "hold", reply: "second", peer: "peer 2" }),
     ]);
-    expect(JSON.stringify(input.evidence)).toContain("pausing all orders until March");
+    expect(JSON.stringify(input.evidence)).toContain(
+      "pausing all orders until their kitchen renovation",
+    );
   });
 });
 
